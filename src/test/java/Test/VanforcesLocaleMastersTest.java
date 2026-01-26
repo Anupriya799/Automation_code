@@ -12,6 +12,10 @@ public class VanforcesLocaleMastersTest extends Vanforces {
 		Thread.sleep(1000);
 		van.loginaccont("task01", "anupriya+355@texolworld.com", "Password");
 		van.regionsetup("Karnataka");
+		van.areaSetUp("Kozhikode", "AR34");
+		van.branchSetUp("kozhikode");
+		van.routeSetUp("route 1");
+		van.warehouseSetUp("warehouse 1", "Main Warehouse", "Calicut , kerala");
 	}
 
 }
