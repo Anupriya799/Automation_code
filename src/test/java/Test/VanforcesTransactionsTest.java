@@ -17,6 +17,8 @@ public class VanforcesTransactionsTest extends Vanforces{
 			tran.pendingquotationSetUp();
 			tran.addingsalesmanDamage("1000");
 			tran.salesmandamageSettlement("500");
+			tran.loadTransaction();
+			tran.suggestedLoad();
 			
 		}
 }

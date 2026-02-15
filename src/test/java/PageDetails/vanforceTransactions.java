@@ -178,9 +178,53 @@ public class vanforceTransactions {
 	    @FindBy(xpath="/html/body/div[5]/div/div[2]/div/div[1]/div/button")
 	    WebElement printclose;
 	    
+	    //Load
 	    
+	    @FindBy(id="rc-menu-uuid-54925-1-/load-summary")
+	    WebElement load;
 	    
+	    @FindBy(xpath="/html/body/div/div/div/main/div[1]/div[2]/div/div[1]/button")
+	    WebElement addload;
 	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[1]/td/span/div/div/span/span[1]/input")
+	    WebElement ldwarehouse;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[4]/td/span/div/div/span/span[1]/input")
+	    WebElement ldroute;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div/div/button")
+	    WebElement ldaddproduct;
+	    
+	    @FindBy(xpath="/html/body/div[4]/div/div[2]/div/div[1]/div/div/div[2]/div[1]/button")
+	    WebElement ldproduct;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div[3]/div/button")
+	    WebElement ldconfirm;
+	    
+	    //Suggested Load
+	    
+	    @FindBy(id="rc-menu-uuid-54925-1-/suggested-loadSummary")
+	    WebElement suggestedload;
+	    
+	    @FindBy(xpath="/html/body/div/div/div/main/div[1]/div[2]/div/div[1]/button")
+	    WebElement newsuggestedload;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[1]/td/span/div/div/span/span[1]/input")
+	    WebElement suggwarehouse;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[7]/td/span/div/div/span/span[1]/input")
+	    WebElement suggroute;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div/div/button")
+	    WebElement suggaddproduct;
+	    
+	    @FindBy(xpath="/html/body/div[5]/div/div[2]/div/div[1]/div/div/div[2]/div[1]/button")
+	    WebElement suggproduct;
+	    
+	    @FindBy(xpath="/html/body/div[5]/div/div[2]/div/div[1]/div/div/div[2]/div[1]/button")
+	    WebElement suggconfirm;
+	    
+	   
 	    
 	    //Constructor
 	    public vanforceTransactions(WebDriver driver) {
@@ -333,7 +377,51 @@ public class vanforceTransactions {
 	    	printclose.click();
 	    	Thread.sleep(1000);
 	    	
-	    	
 	    }
 	    
+	    //Load
+	    
+	    public void loadTransaction() {
+	    	load.click();
+	    	addload.click();
+	    	Select ld=new Select(ldwarehouse);
+	    	ld.selectByVisibleText("Warehouse 1");
+	    	
+	    	Select lds=new Select(ldroute);
+	    	lds.selectByVisibleText("Route 1");
+	    	
+	    	//Pop up message box closing
+	    	driver.switchTo().alert().accept();
+	    	
+	    	ldaddproduct.click();
+	    	ldproduct.click();
+	    	ldconfirm.click();
+	    	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	    	
+	    	}
+	    
+	    //Suggetsed Load
+	    
+	    public void suggestedLoad() {
+	    	suggestedload.click();
+	    	newsuggestedload.click();
+	    	Select sug=new Select(suggwarehouse);
+	    	sug.selectByVisibleText("Warehouse 1");
+	    	
+	    	Select sugg=new Select(suggroute);
+	    	sugg.selectByVisibleText("Route 1");
+	    	
+	    	suggaddproduct.click();
+	    	suggproduct.click();
+	    	suggconfirm.click();
+	    	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	    }
 }
