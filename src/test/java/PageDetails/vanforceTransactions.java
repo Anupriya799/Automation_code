@@ -1,5 +1,6 @@
 package PageDetails;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -118,6 +119,69 @@ public class vanforceTransactions {
 	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div[3]/div/button/span")
 	    WebElement qconfirm;
 	    
+	    
+	    //Pending Quotation
+	    
+	    @FindBy(id="rc-menu-uuid-54925-1-/pending-quotations")
+	    WebElement pendingquotation;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[9]/button")
+	    WebElement viewdetails;
+	    
+	    @FindBy(xpath="/html/body/div/div/div/main/div/div[3]/div/button")
+	    WebElement qpconfirm;
+	    
+	    
+	    //Salesman Damage
+	    
+	    @FindBy(id="rc-menu-uuid-54925-1-/salesman-damage")
+	    WebElement salesmandamage;
+	    
+	    @FindBy(xpath="/html/body/div/div/div/main/div[1]/div[2]/div/div[1]/div/div[1]/button")
+	    WebElement damageadd;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[1]/td/span/div/div/span/span[1]/input")
+	    WebElement sdroute;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div/div/button")
+	    WebElement sdaddproduct;
+	    
+	    @FindBy(xpath="/html/body/div[3]/div/div[2]/div/div[1]/div/div/div[2]/div[1]/button")
+	    WebElement sdproduct;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[3]/div")
+	    WebElement sdquantity;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/div[3]/div/button")
+	    WebElement sdconfirm;
+	    
+	    //Salesman Damage Settlement
+	    
+	    @FindBy(id="rc-menu-uuid-54925-1-/salesman-damage-settlement-summary")
+	    WebElement salesmandamagesettlement;
+	    
+	    @FindBy(xpath="/html/body/div/div/div/main/div[1]/div[2]/div/div[1]/div/div[1]/button")
+	    WebElement addsettlement;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[1]/td/span/div/div/span/span[1]/input")
+	    WebElement stroute;
+	    
+	    @FindBy(xpath="/html/body/div[1]/div/div/main/div/form/div/div[2]/table/tbody/tr[5]/td/span/div/div/span/span[1]/input")
+	    WebElement stsalesman;
+	    
+	    @FindBy(xpath="/html/body/div[4]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[8]/div/input")
+	    WebElement settleamount;
+	    
+	    @FindBy(xpath="/html/body/div[4]/div/div[2]/div/div[1]/div/div[3]/button[2]")
+	    WebElement stsubmit;
+	    
+	    @FindBy(xpath="/html/body/div[5]/div/div[2]/div/div[1]/div/button")
+	    WebElement printclose;
+	    
+	    
+	    
+	    
+	    
 	    //Constructor
 	    public vanforceTransactions(WebDriver driver) {
 	    	
@@ -215,5 +279,61 @@ public class vanforceTransactions {
 			}
 	    	
 	    }
-
+	    //Pending Quotation
+	    
+	    public void pendingquotationSetUp() throws InterruptedException {
+	    	pendingquotation.click();
+	    	Thread.sleep(1000);
+	    	viewdetails.click();
+	    	
+	    	JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(0,500)");
+			 
+			 qpconfirm.click();
+			 Thread.sleep(1000);
+	    }
+	    
+	    //Salesman Damage
+	    
+	    public void addingsalesmanDamage(String qnum) throws InterruptedException {
+	    	salesmandamage.click();
+	    	Thread.sleep(1000);
+	    	damageadd.click();
+	    	
+	    	Select sd=new Select(sdroute);
+	    	sd.selectByVisibleText("route 1");
+	    	
+	    	sdaddproduct.click();
+	    	sdproduct.click();
+	    	sdquantity.clear();
+	    	sdquantity.click();
+	    	sdquantity.sendKeys("qnum");
+	    	sdconfirm.click();
+	    	Thread.sleep(1000);
+	    }
+	    
+	    //Salesman Damage Settlement
+	    
+	    public void salesmandamageSettlement(String stnum) throws InterruptedException {
+	    	salesmandamagesettlement.click();
+	    	Thread.sleep(1000);
+	    	addsettlement.click();
+	    	
+	    	Select st=new Select(stroute);
+	    	st.selectByVisibleText("Route 1");
+	    	
+	    	Select sts=new Select(stsalesman);
+	    	sts.selectByVisibleText("Head Salesman 1");
+	    	
+	    	settleamount.click();
+	    	settleamount.sendKeys("stnum");
+	    	
+	    	stsubmit.click();
+	    	Thread.sleep(2000);
+	    	printclose.click();
+	    	Thread.sleep(1000);
+	    	
+	    	
+	    }
+	    
 }

@@ -13,5 +13,10 @@ public class VanforcesTransactionsTest extends Vanforces{
 			tran.loginaccont("tasko1",  "anupriya+355@texolworld.com", "Password");
 			tran.saleTransaction("10");
 			tran.collectionTransaction("172");
+			tran.quotationTransaction();
+			tran.pendingquotationSetUp();
+			tran.addingsalesmanDamage("1000");
+			tran.salesmandamageSettlement("500");
+			
 		}
 }
