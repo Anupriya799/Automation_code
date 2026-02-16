@@ -224,7 +224,103 @@ public class vanforceTransactions {
 	    @FindBy(xpath="/html/body/div[5]/div/div[2]/div/div[1]/div/div/div[2]/div[1]/button")
 	    WebElement suggconfirm;
 	    
-	   
+	   // UnLoad
+	    
+	    @FindBy(id="rc-menu-uuid-62952-1-/unload-summary")
+	    WebElement unload;
+	    
+	    @FindBy(xpath="/html/body/div/div/div/main/div[1]/div[2]/div/div[1]/button")
+	    WebElement newunload;
+	    
+	    @FindBy(className="ant-select-selection-search-input")
+	    WebElement unwarehouse;
+	    
+	    @FindBy(className="ant-select-selection-search-input")
+	    WebElement unroute;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-block")
+	    WebElement unaddproduct;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ant-btn-sm")
+	    WebElement unproduct;
+	    
+	    @FindBy(className="editable-cell-value-wrap")
+	    WebElement unquantity;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-primary ant-btn-color-primary ant-btn-variant-solid")
+	    WebElement unconfirm;
+	    
+	    //Advance Collection
+	    
+	    @FindBy(id="rc-menu-uuid-62952-1-/advance-collections")
+	    WebElement advancecollection;
+	    
+	    @FindBy(className="ant-row ant-row-space-between ant-row-middle css-geihnj")
+	    WebElement addnewadvcnecollection;
+	    
+	    @FindBy(className="ant-select-selection-search-input")
+	    WebElement advcustomer;
+	    
+	    @FindBy(className="ant-select-selection-search-input")
+	    WebElement advroute;
+	    
+	    @FindBy(id="collection-form_amount")
+	    WebElement advamount;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-primary ant-btn-color-primary ant-btn-variant-solid")
+	    WebElement advsubmit;
+	    
+	    //Credit Debit Note
+	    
+	    @FindBy(id="rc-menu-uuid-62952-1-/credit-debit-notes")
+	    WebElement creditdebitnote;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-primary ant-btn-color-primary ant-btn-variant-solid")
+	    WebElement addnote;
+	    
+	    @FindBy(id="collection-form_customer")
+	    WebElement crcustomer;
+	    
+	    @FindBy(id="collection-form_cost_centre")
+	    WebElement crcostcentre;
+	    
+	    @FindBy(id="collection-form_cash_amount")
+	    WebElement cramount;
+	    
+	    @FindBy(id="collection-form_reference_no")
+	    WebElement referencenumber;
+	    
+	    @FindBy(className="ant-space css-geihnj ant-space-horizontal ant-space-align-center")
+	    WebElement craddnote;
+	    
+	    //Settlement
+	    
+	    @FindBy(id="rc-menu-uuid-62952-1-/settlements")
+	    WebElement settlement;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-primary ant-btn-color-primary ant-btn-variant-solid")
+	    WebElement addsalesmansettlement;
+	    
+	    @FindBy(id="settlement-form_route_id")
+	    WebElement settleroute;
+	    
+	    @FindBy(id="settlement-form_salesman_id")
+	    WebElement settlesalesman;
+	    
+	    @FindBy(id="settlement-form_payment_type")
+	    WebElement settletransactiontype;
+	    
+	    @FindBy(id="settlement-form_collector")
+	    WebElement settlecollector;
+	    
+	    @FindBy(id="settlement-form_total_settled")
+	    WebElement ssettleamount;
+	    
+	    @FindBy(className="ant-btn css-geihnj ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ant-btn-block")
+	    WebElement submitsettlement;
+	    
+	    
+	    
 	    
 	    //Constructor
 	    public vanforceTransactions(WebDriver driver) {
@@ -423,5 +519,86 @@ public class vanforceTransactions {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+	    }
+	    
+	    //Unload
+	    
+	    public void unloadSetUp(String qnum) {
+	    	unload.click();
+	    	newunload.click();
+	    	
+	    	Select unw=new Select(unwarehouse);
+	    	unw.selectByVisibleText("warehouse 1");
+	    	
+	    	Select unr=new Select(unroute);
+	    	unr.deselectByVisibleText("Route 1");
+	    	
+	    	unaddproduct.click();
+	    	unproduct.click();
+	    	unquantity.clear();
+	    	unquantity.click();
+	    	unquantity.sendKeys(qnum);
+	    	unconfirm.click();
+	    
+	    }
+	    
+	    //Advance Collection
+	    
+	    public void advanceCollection(String aamount) {
+	    	advancecollection.click();
+	    	addnewadvcnecollection.click();
+	    	
+	    	Select advc=new Select(advcustomer);
+	    	advc.selectByVisibleText("Customer 1");
+	    	
+	    	Select advr=new Select(advroute);
+	    	advr.selectByVisibleText("Route 1");
+	    	
+	    	advamount.click();
+	    	advamount.sendKeys(aamount);
+	    	advsubmit.click();
+	    }
+	    
+	    //Credit Debit Note
+	    
+	    public void creditdebitNote(String crdtamount,String refnum) {
+	    	creditdebitnote.click();
+	    	addnote.click();
+	    	crcustomer.click();
+	    	
+	    	Select cr=new Select(crcostcentre);
+	    	cr.selectByVisibleText("Customer 1");
+	    	
+	    	Select crd=new Select(crcostcentre);
+	    	crd.selectByVisibleText("CS001");
+	    	
+	    	cramount.sendKeys(crdtamount);
+	    	referencenumber.sendKeys(refnum);
+	    	craddnote.click();
+	    	
+	    }
+	    
+	    //Settlement
+	    
+	    public void settlementSetup(String Samnt) {
+	    	settlement.click();
+	    	addsalesmansettlement.click();
+	    	
+	    	Select stl=new Select(settleroute);
+	    	stl.selectByVisibleText("Route 1");
+	    	
+	    	Select stls=new Select(settlesalesman);
+	    	stls.selectByVisibleText("Head Salesman 1");
+	    	
+	    	Select stlt=new Select(settletransactiontype);
+	    	stlt.selectByVisibleText("Cash");
+	    	
+	    	Select stlc=new Select(settlecollector);
+	    	stlc.selectByVisibleText("Vanforces");
+	    	
+	    	ssettleamount.click();
+	    	ssettleamount.sendKeys(Samnt);
+	    	
+	    	submitsettlement.click();
 	    }
 }

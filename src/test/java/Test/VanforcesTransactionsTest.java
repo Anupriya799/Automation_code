@@ -19,6 +19,9 @@ public class VanforcesTransactionsTest extends Vanforces{
 			tran.salesmandamageSettlement("500");
 			tran.loadTransaction();
 			tran.suggestedLoad();
-			
+			tran.unloadSetUp("23");
+			tran.advanceCollection("1000");
+			tran.creditdebitNote("1200", "INVR00100012");
+			tran.settlementSetup("20000");
 		}
 }
